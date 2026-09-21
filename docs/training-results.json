@@ -1,0 +1,753 @@
+{
+  "source_sha256": "2fd0ebcbc4436c293fff517fb7302dbae715be0d7a142f85ea47f2645d795c7a",
+  "parity": [
+    {
+      "agreement": true,
+      "max_probability_error": 2.4579935598012526e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.384185791015625e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 1.0728836059570312e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.384185791015625e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 5.960464477539062e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 4.76837158203125e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 4.76837158203125e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 3.7694562138312904e-08
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 8.344650268554688e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 1.6689300537109375e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 8.344650268554688e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 5.122897732690035e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 7.152557373046875e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.384185791015625e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 7.152557373046875e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 3.4570693969726562e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 8.225440979003906e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 5.602836608886719e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 7.571149467366922e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 4.406940945500537e-08
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 1.7881393432617188e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.384185791015625e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.0265579223632812e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 9.5367431640625e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.86102294921875e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 5.797637782525272e-05
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 1.9073486328125e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 4.76837158203125e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 1.3113021850585938e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 7.152557373046875e-07
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.2649765014648438e-06
+    },
+    {
+      "agreement": true,
+      "max_probability_error": 2.6995778057425923e-07
+    }
+  ],
+  "episodes": 30,
+  "landed": 30,
+  "guidance_matches": 11147,
+  "decisions": 11147,
+  "wall_seconds": 120.67052545800107,
+  "summaries": [
+    {
+      "seed": 3000,
+      "target": 0,
+      "x": 195.46920025618488,
+      "y": 37.99353898514493,
+      "vx": -0.0018499855544422113,
+      "vy": -0.41229277608820136,
+      "angle": 0.7340529652198597,
+      "fuel": 82.58549999999538,
+      "time": 73.70000000000248,
+      "status": "landed",
+      "score": 100,
+      "decisions": 369,
+      "interventions": 0,
+      "latency_p50_ms": 10.197916009929031,
+      "latency_p95_ms": 10.567541990894824
+    },
+    {
+      "seed": 3001,
+      "target": 0,
+      "x": 195.10083065559402,
+      "y": 37.99932336380332,
+      "vx": -0.0042920631305176215,
+      "vy": -0.2871821103754342,
+      "angle": 0.6431792738802073,
+      "fuel": 81.74889999999552,
+      "time": 75.54000000000211,
+      "status": "landed",
+      "score": 100,
+      "decisions": 378,
+      "interventions": 0,
+      "latency_p50_ms": 10.156603981158696,
+      "latency_p95_ms": 10.61333398683928
+    },
+    {
+      "seed": 3002,
+      "target": 0,
+      "x": 194.89694370522471,
+      "y": 37.99183899815137,
+      "vx": -0.010945201394406662,
+      "vy": -0.47179977465591144,
+      "angle": 2.365349400670283,
+      "fuel": 81.95559999999551,
+      "time": 75.16000000000219,
+      "status": "landed",
+      "score": 100,
+      "decisions": 376,
+      "interventions": 0,
+      "latency_p50_ms": 10.23439600248821,
+      "latency_p95_ms": 10.658333980245516
+    },
+    {
+      "seed": 3003,
+      "target": 0,
+      "x": 194.8167634360703,
+      "y": 37.99504809050297,
+      "vx": 0.001675759995407254,
+      "vy": -0.31829020447268586,
+      "angle": -1.900856983507765,
+      "fuel": 81.84199999999578,
+      "time": 74.80000000000226,
+      "status": "landed",
+      "score": 100,
+      "decisions": 374,
+      "interventions": 0,
+      "latency_p50_ms": 10.197167008300312,
+      "latency_p95_ms": 10.689582995837554
+    },
+    {
+      "seed": 3004,
+      "target": 0,
+      "x": 195.17137165892626,
+      "y": 37.99971397360428,
+      "vx": -0.02512271830307705,
+      "vy": -0.2837154179399376,
+      "angle": 1.9343028950035546,
+      "fuel": 81.79999999999552,
+      "time": 75.32000000000215,
+      "status": "landed",
+      "score": 100,
+      "decisions": 377,
+      "interventions": 0,
+      "latency_p50_ms": 10.251333995256573,
+      "latency_p95_ms": 10.80245801131241
+    },
+    {
+      "seed": 3005,
+      "target": 0,
+      "x": 195.1596929160726,
+      "y": 37.99684040223081,
+      "vx": -0.020232082765915472,
+      "vy": -0.25802650000356453,
+      "angle": -3.36840217793457,
+      "fuel": 82.12869999999474,
+      "time": 74.22000000000237,
+      "status": "landed",
+      "score": 100,
+      "decisions": 372,
+      "interventions": 0,
+      "latency_p50_ms": 10.13756199972704,
+      "latency_p95_ms": 10.50149998627603
+    },
+    {
+      "seed": 3006,
+      "target": 0,
+      "x": 195.34667439830693,
+      "y": 37.99272883408182,
+      "vx": 0.00041449222528588546,
+      "vy": -0.3954240686033147,
+      "angle": 1.2205380531955257,
+      "fuel": 82.26749999999534,
+      "time": 73.38000000000254,
+      "status": "landed",
+      "score": 100,
+      "decisions": 367,
+      "interventions": 0,
+      "latency_p50_ms": 10.168375010835007,
+      "latency_p95_ms": 10.632207995513454
+    },
+    {
+      "seed": 3007,
+      "target": 0,
+      "x": 194.5046880199301,
+      "y": 37.99834669338634,
+      "vx": -0.009209509614249331,
+      "vy": -0.2520989434519978,
+      "angle": -0.42837533629935365,
+      "fuel": 82.66199999999486,
+      "time": 73.88000000000244,
+      "status": "landed",
+      "score": 100,
+      "decisions": 370,
+      "interventions": 0,
+      "latency_p50_ms": 10.163166487473063,
+      "latency_p95_ms": 10.524750017793849
+    },
+    {
+      "seed": 3008,
+      "target": 0,
+      "x": 194.8412499652451,
+      "y": 37.99138105686447,
+      "vx": -0.006609621779117643,
+      "vy": -0.4528875278922284,
+      "angle": -1.9647513477971472,
+      "fuel": 81.90299999999482,
+      "time": 74.12000000000239,
+      "status": "landed",
+      "score": 100,
+      "decisions": 371,
+      "interventions": 0,
+      "latency_p50_ms": 10.41312498273328,
+      "latency_p95_ms": 10.880875022849068
+    },
+    {
+      "seed": 3009,
+      "target": 0,
+      "x": 194.88776303349664,
+      "y": 37.99885834821559,
+      "vx": -0.0029654837144592228,
+      "vy": -0.4435201460013368,
+      "angle": 3.568808217823687,
+      "fuel": 82.26999999999549,
+      "time": 74.18000000000238,
+      "status": "landed",
+      "score": 100,
+      "decisions": 371,
+      "interventions": 0,
+      "latency_p50_ms": 10.661874985089526,
+      "latency_p95_ms": 11.069791013142094
+    },
+    {
+      "seed": 3000,
+      "target": 1,
+      "x": 500.4732454343136,
+      "y": 27.995789968638963,
+      "vx": 0.002899837775433447,
+      "vy": -0.24655547730872615,
+      "angle": 0.7340529652198597,
+      "fuel": 82.00099999999523,
+      "time": 76.22000000000197,
+      "status": "landed",
+      "score": 50,
+      "decisions": 382,
+      "interventions": 0,
+      "latency_p50_ms": 10.755603987490758,
+      "latency_p95_ms": 11.159167013829574
+    },
+    {
+      "seed": 3001,
+      "target": 1,
+      "x": 500.1005561000835,
+      "y": 27.993425182448266,
+      "vx": 0.004332592795132753,
+      "vy": -0.33169255589270663,
+      "angle": 2.4431792738801903,
+      "fuel": 81.89899999999554,
+      "time": 74.92000000000223,
+      "status": "landed",
+      "score": 50,
+      "decisions": 375,
+      "interventions": 0,
+      "latency_p50_ms": 10.874125000555068,
+      "latency_p95_ms": 11.204249982256442
+    },
+    {
+      "seed": 3002,
+      "target": 1,
+      "x": 499.8831355234091,
+      "y": 27.999784845693974,
+      "vx": 0.006860966439297098,
+      "vy": -0.232118407901737,
+      "angle": 3.5653494006702715,
+      "fuel": 81.97649999999548,
+      "time": 74.98000000000222,
+      "status": "landed",
+      "score": 50,
+      "decisions": 375,
+      "interventions": 0,
+      "latency_p50_ms": 10.828500002389774,
+      "latency_p95_ms": 11.201666988199577
+    },
+    {
+      "seed": 3003,
+      "target": 1,
+      "x": 499.82096024081386,
+      "y": 27.9979527448344,
+      "vx": -0.014251982098573816,
+      "vy": -0.17992087220918773,
+      "angle": -1.900856983507765,
+      "fuel": 81.85399999999561,
+      "time": 74.96000000000222,
+      "status": "landed",
+      "score": 50,
+      "decisions": 375,
+      "interventions": 0,
+      "latency_p50_ms": 10.768540989374742,
+      "latency_p95_ms": 11.178833025041968
+    },
+    {
+      "seed": 3004,
+      "target": 1,
+      "x": 500.1820263522126,
+      "y": 27.998163751612307,
+      "vx": -0.02148334095426546,
+      "vy": -0.24663177255680904,
+      "angle": -3.4656971049963943,
+      "fuel": 81.86569999999553,
+      "time": 75.02000000000221,
+      "status": "landed",
+      "score": 50,
+      "decisions": 376,
+      "interventions": 0,
+      "latency_p50_ms": 10.672374497517012,
+      "latency_p95_ms": 11.15874998504296
+    },
+    {
+      "seed": 3005,
+      "target": 1,
+      "x": 500.16256309484066,
+      "y": 27.992083248149825,
+      "vx": -0.020148290267096677,
+      "vy": -0.5506545594858105,
+      "angle": 2.031597822065379,
+      "fuel": 81.70799999999502,
+      "time": 75.6000000000021,
+      "status": "landed",
+      "score": 50,
+      "decisions": 378,
+      "interventions": 0,
+      "latency_p50_ms": 10.624187503708526,
+      "latency_p95_ms": 11.097334005171433
+    },
+    {
+      "seed": 3006,
+      "target": 1,
+      "x": 500.3636019828224,
+      "y": 27.998738351456897,
+      "vx": 0.003089567204334281,
+      "vy": -0.1234696040111313,
+      "angle": 0.6205380531955313,
+      "fuel": 81.56319999999536,
+      "time": 76.02000000000201,
+      "status": "landed",
+      "score": 50,
+      "decisions": 381,
+      "interventions": 0,
+      "latency_p50_ms": 10.808749997522682,
+      "latency_p95_ms": 16.236125025898218
+    },
+    {
+      "seed": 3007,
+      "target": 1,
+      "x": 499.4951892197324,
+      "y": 27.99480373155416,
+      "vx": -0.004349790855779176,
+      "vy": -0.48088077637783516,
+      "angle": -0.42837533629935365,
+      "fuel": 82.7464999999949,
+      "time": 73.62000000000249,
+      "status": "landed",
+      "score": 50,
+      "decisions": 369,
+      "interventions": 0,
+      "latency_p50_ms": 10.900916997343302,
+      "latency_p95_ms": 16.045833006501198
+    },
+    {
+      "seed": 3008,
+      "target": 1,
+      "x": 499.82317965148496,
+      "y": 27.997029764699572,
+      "vx": -0.0046815340154361465,
+      "vy": -0.21570928717483498,
+      "angle": 3.4352486522028016,
+      "fuel": 81.52719999999474,
+      "time": 75.6200000000021,
+      "status": "landed",
+      "score": 50,
+      "decisions": 379,
+      "interventions": 0,
+      "latency_p50_ms": 10.698374971980229,
+      "latency_p95_ms": 11.117959016701207
+    },
+    {
+      "seed": 3009,
+      "target": 1,
+      "x": 499.8874684694436,
+      "y": 27.99784274602193,
+      "vx": 0.009551524583016472,
+      "vy": -0.3859224339433311,
+      "angle": -2.4311917821762563,
+      "fuel": 82.16399999999538,
+      "time": 74.76000000000226,
+      "status": "landed",
+      "score": 50,
+      "decisions": 374,
+      "interventions": 0,
+      "latency_p50_ms": 10.514062509173527,
+      "latency_p95_ms": 11.058458010666072
+    },
+    {
+      "seed": 3000,
+      "target": 2,
+      "x": 800.4706630133912,
+      "y": 47.99669312718027,
+      "vx": 0.005686546460768722,
+      "vy": -0.3333109063552763,
+      "angle": -1.6659470347801175,
+      "fuel": 82.76079999999541,
+      "time": 72.88000000000264,
+      "status": "landed",
+      "score": 200,
+      "decisions": 365,
+      "interventions": 0,
+      "latency_p50_ms": 10.461041994858533,
+      "latency_p95_ms": 10.883750015636906
+    },
+    {
+      "seed": 3001,
+      "target": 2,
+      "x": 800.0978852813494,
+      "y": 47.99912742214467,
+      "vx": -0.009808711319180364,
+      "vy": -0.5136469153980089,
+      "angle": 2.4431792738801903,
+      "fuel": 82.49299999999565,
+      "time": 72.44000000000273,
+      "status": "landed",
+      "score": 200,
+      "decisions": 363,
+      "interventions": 0,
+      "latency_p50_ms": 10.485917009646073,
+      "latency_p95_ms": 10.884457995416597
+    },
+    {
+      "seed": 3002,
+      "target": 2,
+      "x": 799.9045025511066,
+      "y": 47.99238481228564,
+      "vx": 0.0073801561005378945,
+      "vy": -0.4519769884170458,
+      "angle": -2.4346505993296716,
+      "fuel": 82.4424999999956,
+      "time": 73.02000000000261,
+      "status": "landed",
+      "score": 200,
+      "decisions": 366,
+      "interventions": 0,
+      "latency_p50_ms": 10.739729506894946,
+      "latency_p95_ms": 11.139499983983114
+    },
+    {
+      "seed": 3003,
+      "target": 2,
+      "x": 799.8067396976271,
+      "y": 47.99007687240897,
+      "vx": 0.024417128051820905,
+      "vy": -0.5158121308281832,
+      "angle": -1.3008569835077708,
+      "fuel": 82.19979999999583,
+      "time": 73.38000000000254,
+      "status": "landed",
+      "score": 200,
+      "decisions": 367,
+      "interventions": 0,
+      "latency_p50_ms": 10.830915998667479,
+      "latency_p95_ms": 11.198124993825331
+    },
+    {
+      "seed": 3004,
+      "target": 2,
+      "x": 800.1938751298563,
+      "y": 47.99507341409478,
+      "vx": -0.015995777023541952,
+      "vy": -0.2546525199499865,
+      "angle": -3.4656971049963943,
+      "fuel": 82.48919999999569,
+      "time": 72.22000000000277,
+      "status": "landed",
+      "score": 200,
+      "decisions": 362,
+      "interventions": 0,
+      "latency_p50_ms": 11.24491702648811,
+      "latency_p95_ms": 11.61070799571462
+    },
+    {
+      "seed": 3005,
+      "target": 2,
+      "x": 800.1594982988996,
+      "y": 47.99978604604409,
+      "vx": -0.025713181542294874,
+      "vy": -0.19986472767067373,
+      "angle": -1.568402177934587,
+      "fuel": 82.09079999999477,
+      "time": 74.28000000000236,
+      "status": "landed",
+      "score": 200,
+      "decisions": 372,
+      "interventions": 0,
+      "latency_p50_ms": 11.468957993201911,
+      "latency_p95_ms": 11.982750002061948
+    },
+    {
+      "seed": 3006,
+      "target": 2,
+      "x": 800.3370019310925,
+      "y": 47.992911536724385,
+      "vx": -0.006946160371499569,
+      "vy": -0.5163255593871279,
+      "angle": 1.2205380531955257,
+      "fuel": 82.40899999999513,
+      "time": 73.24000000000257,
+      "status": "landed",
+      "score": 200,
+      "decisions": 367,
+      "interventions": 0,
+      "latency_p50_ms": 10.86679199943319,
+      "latency_p95_ms": 11.321457976009697
+    },
+    {
+      "seed": 3007,
+      "target": 2,
+      "x": 799.5047504336845,
+      "y": 47.99783415038321,
+      "vx": 0.010224147079392728,
+      "vy": -0.2730806619701723,
+      "angle": -0.42837533629935365,
+      "fuel": 82.90899999999496,
+      "time": 72.72000000000267,
+      "status": "landed",
+      "score": 200,
+      "decisions": 364,
+      "interventions": 0,
+      "latency_p50_ms": 11.15918751747813,
+      "latency_p95_ms": 11.715875007212162
+    },
+    {
+      "seed": 3008,
+      "target": 2,
+      "x": 799.8323359516253,
+      "y": 47.996042097715325,
+      "vx": 0.0054752102702780685,
+      "vy": -0.5059712407226664,
+      "angle": -1.9647513477971472,
+      "fuel": 82.0844999999948,
+      "time": 73.46000000000252,
+      "status": "landed",
+      "score": 200,
+      "decisions": 368,
+      "interventions": 0,
+      "latency_p50_ms": 11.599666497204453,
+      "latency_p95_ms": 12.246583006344736
+    },
+    {
+      "seed": 3009,
+      "target": 2,
+      "x": 799.900976475408,
+      "y": 47.99375160948171,
+      "vx": 0.010347984070458517,
+      "vy": -0.3304086576166324,
+      "angle": -2.4311917821762563,
+      "fuel": 82.63149999999548,
+      "time": 72.66000000000268,
+      "status": "landed",
+      "score": 200,
+      "decisions": 364,
+      "interventions": 0,
+      "latency_p50_ms": 11.866104003274813,
+      "latency_p95_ms": 12.331875012023374
+    }
+  ],
+  "pooled_p50_ms": 10.658125014742836,
+  "pooled_p95_ms": 11.819625011412427,
+  "training": {
+    "method": "supervised guidance imitation; cross entropy",
+    "source": "aac6fef/laya-multilingual-mlx",
+    "source_revision": "f2b4faf51023039425946074e2cf1361d2db11d5",
+    "world_size": 3,
+    "epochs": 3,
+    "encoder_layers": 2,
+    "trainable_parameters": 24801793,
+    "dataset": {
+      "teacher": "lunar_laya.pilot.guidance",
+      "questions": {
+        "rotation": {
+          "type": "choice",
+          "instructions": "Control lunar lander tilt. Follow the requested tilt correction.",
+          "criteria": {
+            "left": "Decrease tilt angle",
+            "hold": "Keep current tilt",
+            "right": "Increase tilt angle"
+          }
+        },
+        "engine": {
+          "type": "choice",
+          "instructions": "Control lunar lander engine. Follow the requested engine power.",
+          "criteria": {
+            "off": "Zero thrust",
+            "half": "Half thrust",
+            "full": "Full thrust"
+          }
+        }
+      },
+      "prompt_contains_requested_labels": true,
+      "splits": {
+        "train": {
+          "rows": 13022,
+          "rollout_seeds": [
+            1000,
+            1031
+          ],
+          "labels": {
+            "rotation:left": 1576,
+            "engine:off": 2787,
+            "rotation:hold": 3419,
+            "engine:half": 3316,
+            "rotation:right": 1516,
+            "engine:full": 408
+          },
+          "sha256": "c03c154f5eb4153d09ddb0958bce6a2a1b0bdd6297b37f420b45498b830e42ba"
+        },
+        "validation": {
+          "rows": 1928,
+          "rollout_seeds": [
+            2000,
+            2003
+          ],
+          "labels": {
+            "rotation:left": 284,
+            "engine:off": 432,
+            "rotation:hold": 415,
+            "engine:half": 444,
+            "rotation:right": 265,
+            "engine:full": 88
+          },
+          "sha256": "8d9ff3f5fe352ba957b5a3cddb43fc2adda5cb171819c292b1148f0a5e3ba863"
+        }
+      }
+    },
+    "best_validation_accuracy": 1.0,
+    "torch": "2.12.0+cu130"
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "rank0_train_loss": 0.07497153312225724,
+      "validation_accuracy": 1.0,
+      "per_question": {
+        "rotation": 1.0,
+        "engine": 1.0
+      },
+      "elapsed_seconds": 8.607192683033645
+    },
+    {
+      "epoch": 2,
+      "rank0_train_loss": 0.00015972441405848518,
+      "validation_accuracy": 1.0,
+      "per_question": {
+        "rotation": 1.0,
+        "engine": 1.0
+      },
+      "elapsed_seconds": 17.44724894897081
+    },
+    {
+      "epoch": 3,
+      "rank0_train_loss": 3.719136552974877e-05,
+      "validation_accuracy": 1.0,
+      "per_question": {
+        "rotation": 1.0,
+        "engine": 1.0
+      },
+      "elapsed_seconds": 25.07218948798254
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lunar-laya"
+version = "0.1.0"
+description = "An Atari-inspired lunar lander controlled by Laya on Apple MLX"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+media = ["Pillow>=12,<13"]
+mlx = ["laya-mlx @ git+https://github.com/mizorewww/laya-mlx.git@fc1df62828a3fedf4d8229fdac1cbd85f1cdf337"]
+
+[project.scripts]
+lunar-laya = "lunar_laya.cli:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["lunar_laya"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/lunar_laya", "/tests", "/docs", "/training", "/web", "/README.md", "/pyproject.toml", "/.gitignore"]

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lunar Laya · Mission Control</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="#flight"><span class="logo">◒</span><span>LUNAR<span class="brand-sub">LAYA / MISSION CONTROL</span></span></a>
+  <div class="nav-label">WORKSPACE</div>
+  <nav aria-label="Main navigation">
+    <a href="#flight" data-page="flight"><span>◈</span> Flight deck</a>
+    <a href="#compare" data-page="compare"><span>▤</span> Compare pilots</a>
+    <a href="#about" data-page="about"><span>◎</span> How it works</a>
+  </nav>
+  <div class="sidebar-bottom"><span class="dot"></span> LOCAL INFERENCE<br><small>Apple MLX · No cloud inference</small><hr><small>VanillaJS · Recorded experiments<br>Simulation v0.1</small></div>
+</aside>
+<main>
+  <header><div><div class="eyebrow">LUNAR LANDING LABORATORY</div><h1 id="page-title">Flight deck</h1></div><div class="badge">● &nbsp; FLIGHT RECORDER</div></header>
+  <div id="notice" role="status" aria-live="polite">Loading mission recordings…</div>
+  <section id="flight-page" class="page">
+    <div class="intro"><div><h2>Every decision. Every descent.</h2><p>Explore how a local decision model brings a lander home.</p></div><label class="field">PILOT<select id="pilot" aria-label="Pilot recording"></select></label></div>
+    <div class="flight-grid">
+      <div>
+        <div class="scene card">
+          <div class="scene-top"><span><span class="dot"></span> <b id="mission-label">MISSION</b></span><span id="scene-mode">RECORDED SIMULATION</span></div>
+          <div class="metrics"><div><label>PAD ALTITUDE</label><strong id="altitude">—</strong></div><div><label>VERTICAL SPEED</label><strong id="vertical">—</strong></div><div><label>HORIZONTAL SPEED</label><strong id="horizontal">—</strong></div><div><label>FUEL REMAINING</label><strong id="fuel">—</strong></div></div>
+          <canvas id="flight-canvas" width="1100" height="520" aria-label="Recorded lunar flight trajectory above terrain"></canvas>
+          <div class="scene-bottom"><span id="flight-status">AWAITING DATA</span><span id="mission-time">T+ 0.00 s</span><span id="tilt">TILT —</span></div>
+        </div>
+        <div class="playback card"><div class="playback-top"><button id="play" disabled>Play</button><button id="restart" class="ghost" disabled>↺ Restart</button><span id="frame-label">FRAME —</span><label>Speed <select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="4">4×</option><option value="16">16×</option></select></label></div><input id="timeline" type="range" min="0" max="1" value="0" aria-label="Decision timeline" disabled><div class="timeline-labels"><span>LAUNCH</span><span>Simulation time · Space to play / pause</span><span>TOUCHDOWN / END</span></div></div>
+        <div class="flight-footer"><label>Flight <select id="episode" aria-label="Recorded episode"></select></label><span>Landing: |vx| ≤ 2 m/s &nbsp; · &nbsp; descent ≤ 3 m/s &nbsp; · &nbsp; |tilt| ≤ 8°</span></div>
+      </div>
+      <aside class="telemetry">
+        <section class="card decision"><div class="section-title">DECISION ENGINE <span id="engine-tag">MLX</span></div><h3 id="pilot-name">—</h3><p id="pilot-description"></p><div id="probabilities"></div><div class="command-row"><span>Proposed</span><strong id="proposed">—</strong></div><div class="command-row"><span>Executed</span><strong id="executed">—</strong></div><div id="intervention" class="intervention"></div><div class="latency"><span>DECISION LATENCY</span><strong id="latency">—</strong></div></section>
+        <section class="card"><div class="section-title">MISSION SUMMARY</div><div class="command-row"><span>Final outcome</span><strong id="outcome">—</strong></div><div class="command-row"><span>Landing score</span><strong id="score">—</strong></div><div class="command-row"><span>Guidance overrides</span><strong id="override-count">—</strong></div><div class="command-row"><span>Decision count</span><strong id="decision-count">—</strong></div></section>
+        <details class="card"><summary>Inspect model input</summary><pre id="prompt"></pre></details>
+      </aside>
+    </div>
+  </section>
+  <section id="compare-page" class="page" hidden><div class="intro"><div><h2>Same physics. Different pilots.</h2><p>Measured outcomes from the recordings included in this application.</p></div></div><div id="comparison-cards" class="comparison-cards"></div><div class="card table-wrap"><table><thead><tr><th>Pilot</th><th>Seed / pad</th><th>Outcome</th><th>Score</th><th>Overrides</th><th>P50 decision</th></tr></thead><tbody id="comparison-table"></tbody></table></div><p class="footnote">Compare matching seeds and pads for paired results. Assisted flights execute guidance whenever the model disagrees; assisted success does not measure independent model competence. Latency excludes model loading.</p></section>
+  <section id="about-page" class="page" hidden><div class="intro"><div><h2>A small model. An inspectable experiment.</h2><p>Understand the controls, the model, and the limits of the evidence.</p></div></div><div class="about-grid"><article class="card"><div class="eyebrow">01 / SIMULATE</div><h3>Physics keeps the score</h3><p>Gravity, inertia, tilt and finite fuel determine the trajectory. Python integrates at 50 Hz, with one control decision per 0.2 simulated seconds. Three landing pads reward precise touchdown.</p></article><article class="card"><div class="eyebrow">02 / DECIDE</div><h3>Laya chooses typed actions</h3><p>Telemetry and explicit guidance requests become two choice questions: rotation and thrust. The local MLX model returns option probabilities without generating text.</p></article><article class="card"><div class="eyebrow">03 / EVALUATE</div><h3>Separate model and guidance</h3><p>Raw execution applies the model's answers. Assistance replaces every disagreement with deterministic guidance. A separately trained checkpoint learns guidance-following from labelled examples.</p></article><article class="card"><div class="eyebrow">04 / REPLAY</div><h3>Actual recorded decisions</h3><p>This browser runs only VanillaJS visualization. It does not perform inference or simulate new flights. Download a recording to inspect every state transition and the exact prompt.</p></article></div><div class="card about-notes"><h3>Reading the flight deck</h3><p>Altitude is hull height relative to the selected pad, not clearance over local mountains. Negative vertical velocity means descending. Positive tilt is rightward. The path is recorded history, not a prediction. Probability bars are model preferences, not probabilities of safe landing.</p><h3>Scope</h3><p>An original Atari-inspired experiment, not ROM emulation or spacecraft flight software. No sound, coins, manual piloting or online training occurs in this application. Training is an optional, separate CUDA workflow; inference runs locally on MLX.</p></div></section>
+  <footer><span>Original lunar simulation · Laya on MLX</span><a id="download" hidden download>Download current recording ↗</a></footer>
+</main>
+</body>
+</html>

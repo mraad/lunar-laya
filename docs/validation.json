@@ -1,0 +1,236 @@
+{
+  "date": "2026-09-21",
+  "baseline_matrix": {
+    "seeds": [
+      100,
+      199
+    ],
+    "targets": [
+      0,
+      1,
+      2
+    ],
+    "episodes": 300,
+    "landed": 300
+  },
+  "runs": {
+    "baseline": {
+      "pilot": {
+        "mode": "baseline",
+        "model": null,
+        "revision": null
+      },
+      "runtime": {
+        "python": "3.12.12",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": {
+          "laya-mlx": "0.1.0",
+          "mlx": "0.32.2",
+          "tokenizers": "0.23.2"
+        },
+        "load_seconds": 1.166015863418579e-06
+      },
+      "summaries": [
+        {
+          "seed": 100,
+          "target": 1,
+          "x": 500.4846035194774,
+          "y": 27.994005603382167,
+          "vx": -0.002448786853043991,
+          "vy": -0.38198487528149244,
+          "angle": 0.4988113358165833,
+          "fuel": 82.32299999999483,
+          "time": 73.80000000000246,
+          "status": "landed",
+          "score": 50,
+          "decisions": 369,
+          "interventions": 0,
+          "latency_p50_ms": 0.003082997864112258,
+          "latency_p95_ms": 0.004125002305954695
+        },
+        {
+          "seed": 101,
+          "target": 1,
+          "x": 499.6196765127777,
+          "y": 27.991843927404616,
+          "vx": -0.011534049831707319,
+          "vy": -0.46031917021737656,
+          "angle": -0.8339734305332058,
+          "fuel": 82.38699999999497,
+          "time": 74.48000000000232,
+          "status": "landed",
+          "score": 50,
+          "decisions": 373,
+          "interventions": 0,
+          "latency_p50_ms": 0.0029999937396496534,
+          "latency_p95_ms": 0.003958004526793957
+        },
+        {
+          "seed": 102,
+          "target": 1,
+          "x": 499.812373163488,
+          "y": 27.995321763076817,
+          "vx": 0.00016311973873986787,
+          "vy": -0.314654035687424,
+          "angle": -1.3275402627440371,
+          "fuel": 81.99429999999562,
+          "time": 74.38000000000234,
+          "status": "landed",
+          "score": 50,
+          "decisions": 372,
+          "interventions": 0,
+          "latency_p50_ms": 0.00304199056699872,
+          "latency_p95_ms": 0.003916997229680419
+        }
+      ],
+      "pooled_p50_ms": 0.0030410010367631912,
+      "pooled_p95_ms": 0.003958994057029486
+    },
+    "assisted": {
+      "pilot": {
+        "mode": "assisted",
+        "model": "aac6fef/laya-multilingual-mlx",
+        "revision": "f2b4faf51023039425946074e2cf1361d2db11d5",
+        "resolved_path": ".cache/huggingface/hub/models--aac6fef--laya-multilingual-mlx/snapshots/f2b4faf51023039425946074e2cf1361d2db11d5"
+      },
+      "runtime": {
+        "python": "3.12.12",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": {
+          "laya-mlx": "0.1.0",
+          "mlx": "0.32.2",
+          "tokenizers": "0.23.2"
+        },
+        "load_seconds": 0.43685995900887065
+      },
+      "summaries": [
+        {
+          "seed": 100,
+          "target": 1,
+          "x": 500.4846035194774,
+          "y": 27.994005603382167,
+          "vx": -0.002448786853043991,
+          "vy": -0.38198487528149244,
+          "angle": 0.4988113358165833,
+          "fuel": 82.32299999999483,
+          "time": 73.80000000000246,
+          "status": "landed",
+          "score": 50,
+          "decisions": 369,
+          "interventions": 162,
+          "latency_p50_ms": 10.05462498869747,
+          "latency_p95_ms": 10.539541020989418
+        },
+        {
+          "seed": 101,
+          "target": 1,
+          "x": 499.6196765127777,
+          "y": 27.991843927404616,
+          "vx": -0.011534049831707319,
+          "vy": -0.46031917021737656,
+          "angle": -0.8339734305332058,
+          "fuel": 82.38699999999497,
+          "time": 74.48000000000232,
+          "status": "landed",
+          "score": 50,
+          "decisions": 373,
+          "interventions": 167,
+          "latency_p50_ms": 10.04879199899733,
+          "latency_p95_ms": 10.538625007029623
+        },
+        {
+          "seed": 102,
+          "target": 1,
+          "x": 499.812373163488,
+          "y": 27.995321763076817,
+          "vx": 0.00016311973873986787,
+          "vy": -0.314654035687424,
+          "angle": -1.3275402627440371,
+          "fuel": 81.99429999999562,
+          "time": 74.38000000000234,
+          "status": "landed",
+          "score": 50,
+          "decisions": 372,
+          "interventions": 193,
+          "latency_p50_ms": 10.304770490620285,
+          "latency_p95_ms": 10.667291993740946
+        }
+      ],
+      "pooled_p50_ms": 10.137083008885384,
+      "pooled_p95_ms": 10.593000013614073
+    },
+    "raw": {
+      "pilot": {
+        "mode": "laya",
+        "model": "aac6fef/laya-multilingual-mlx",
+        "revision": "f2b4faf51023039425946074e2cf1361d2db11d5",
+        "resolved_path": ".cache/huggingface/hub/models--aac6fef--laya-multilingual-mlx/snapshots/f2b4faf51023039425946074e2cf1361d2db11d5"
+      },
+      "runtime": {
+        "python": "3.12.12",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": {
+          "laya-mlx": "0.1.0",
+          "mlx": "0.32.2",
+          "tokenizers": "0.23.2"
+        },
+        "load_seconds": 0.44499420799547806
+      },
+      "summaries": [
+        {
+          "seed": 100,
+          "target": 1,
+          "x": 492.6971609108044,
+          "y": 750.4830795497193,
+          "vx": 7.099749801240972,
+          "vy": 33.407577495597096,
+          "angle": 6.4988113358165265,
+          "fuel": 91.01699999999639,
+          "time": 16.81999999999973,
+          "status": "out_of_bounds",
+          "score": 0,
+          "decisions": 85,
+          "interventions": 0,
+          "latency_p50_ms": 10.072041011881083,
+          "latency_p95_ms": 10.560333001194522
+        },
+        {
+          "seed": 101,
+          "target": 1,
+          "x": 992.4185412388615,
+          "y": 416.32359608546506,
+          "vx": 23.62174370055302,
+          "vy": 29.104726640777084,
+          "angle": 11.16602656946668,
+          "fuel": 80.8639999999923,
+          "time": 66.24000000000396,
+          "status": "out_of_bounds",
+          "score": 0,
+          "decisions": 332,
+          "interventions": 0,
+          "latency_p50_ms": 10.10831250459887,
+          "latency_p95_ms": 10.53254198632203
+        },
+        {
+          "seed": 102,
+          "target": 1,
+          "x": 329.4844744158755,
+          "y": 750.0289593943878,
+          "vx": -8.233449974291538,
+          "vy": 21.909726194256297,
+          "angle": -7.927540262743975,
+          "fuel": 90.49049999999617,
+          "time": 26.25999999999953,
+          "status": "out_of_bounds",
+          "score": 0,
+          "decisions": 132,
+          "interventions": 0,
+          "latency_p50_ms": 10.117041514604352,
+          "latency_p95_ms": 10.505874990485609
+        }
+      ],
+      "pooled_p50_ms": 10.102166997967288,
+      "pooled_p95_ms": 10.530958999879658
+    }
+  }
+}

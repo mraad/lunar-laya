@@ -1,0 +1,314 @@
+{
+  "baseline": {
+    "pilot": {
+      "mode": "baseline",
+      "model": null,
+      "revision": null
+    },
+    "summaries": [
+      {
+        "seed": 3000,
+        "target": 1,
+        "x": 500.4732454343136,
+        "y": 27.995789968638963,
+        "vx": 0.002899837775433447,
+        "vy": -0.24655547730872615,
+        "angle": 0.7340529652198597,
+        "fuel": 82.00099999999523,
+        "time": 76.22000000000197,
+        "status": "landed",
+        "score": 50,
+        "decisions": 382,
+        "interventions": 0,
+        "latency_p50_ms": 0.0030410010367631912,
+        "latency_p95_ms": 0.004708010237663984
+      },
+      {
+        "seed": 3001,
+        "target": 1,
+        "x": 500.1005561000835,
+        "y": 27.993425182448266,
+        "vx": 0.004332592795132753,
+        "vy": -0.33169255589270663,
+        "angle": 2.4431792738801903,
+        "fuel": 81.89899999999554,
+        "time": 74.92000000000223,
+        "status": "landed",
+        "score": 50,
+        "decisions": 375,
+        "interventions": 0,
+        "latency_p50_ms": 0.0029999937396496534,
+        "latency_p95_ms": 0.004083005478605628
+      },
+      {
+        "seed": 3002,
+        "target": 1,
+        "x": 499.8831355234091,
+        "y": 27.999784845693974,
+        "vx": 0.006860966439297098,
+        "vy": -0.232118407901737,
+        "angle": 3.5653494006702715,
+        "fuel": 81.97649999999548,
+        "time": 74.98000000000222,
+        "status": "landed",
+        "score": 50,
+        "decisions": 375,
+        "interventions": 0,
+        "latency_p50_ms": 0.0031249946914613247,
+        "latency_p95_ms": 0.0058340083342045546
+      }
+    ]
+  },
+  "pretrained": {
+    "pilot": {
+      "mode": "laya",
+      "model": "aac6fef/laya-multilingual-mlx",
+      "revision": "f2b4faf51023039425946074e2cf1361d2db11d5",
+      "resolved_path": ".cache/huggingface/hub/models--aac6fef--laya-multilingual-mlx/snapshots/f2b4faf51023039425946074e2cf1361d2db11d5"
+    },
+    "summaries": [
+      {
+        "seed": 3000,
+        "target": 1,
+        "x": 364.65577997083767,
+        "y": 750.0279988088236,
+        "vx": -9.418909595727822,
+        "vy": 22.141781564080887,
+        "angle": -5.265947034780083,
+        "fuel": 90.91299999999634,
+        "time": 24.35999999999957,
+        "status": "out_of_bounds",
+        "score": 0,
+        "decisions": 122,
+        "interventions": 0,
+        "latency_p50_ms": 10.587708515231498,
+        "latency_p95_ms": 11.850790993776172
+      },
+      {
+        "seed": 3001,
+        "target": 1,
+        "x": 377.954039289151,
+        "y": 750.2648423739741,
+        "vx": -5.236752698325962,
+        "vy": 23.309163566437018,
+        "angle": -3.556820726119753,
+        "fuel": 90.89999999999634,
+        "time": 23.79999999999958,
+        "status": "out_of_bounds",
+        "score": 0,
+        "decisions": 119,
+        "interventions": 0,
+        "latency_p50_ms": 12.118291982915252,
+        "latency_p95_ms": 12.549791019409895
+      },
+      {
+        "seed": 3002,
+        "target": 1,
+        "x": 449.88164480795314,
+        "y": 750.1709035689055,
+        "vx": -0.7530188324291403,
+        "vy": 19.114617921419033,
+        "angle": -2.4346505993296716,
+        "fuel": 91.15999999999644,
+        "time": 25.19999999999955,
+        "status": "out_of_bounds",
+        "score": 0,
+        "decisions": 126,
+        "interventions": 0,
+        "latency_p50_ms": 12.002083502011374,
+        "latency_p95_ms": 13.487707998137921
+      }
+    ]
+  },
+  "assisted": {
+    "pilot": {
+      "mode": "assisted",
+      "model": "aac6fef/laya-multilingual-mlx",
+      "revision": "f2b4faf51023039425946074e2cf1361d2db11d5",
+      "resolved_path": ".cache/huggingface/hub/models--aac6fef--laya-multilingual-mlx/snapshots/f2b4faf51023039425946074e2cf1361d2db11d5"
+    },
+    "summaries": [
+      {
+        "seed": 3000,
+        "target": 1,
+        "x": 500.4732454343136,
+        "y": 27.995789968638963,
+        "vx": 0.002899837775433447,
+        "vy": -0.24655547730872615,
+        "angle": 0.7340529652198597,
+        "fuel": 82.00099999999523,
+        "time": 76.22000000000197,
+        "status": "landed",
+        "score": 50,
+        "decisions": 382,
+        "interventions": 177,
+        "latency_p50_ms": 12.159687001258135,
+        "latency_p95_ms": 13.0840000056196
+      },
+      {
+        "seed": 3001,
+        "target": 1,
+        "x": 500.1005561000835,
+        "y": 27.993425182448266,
+        "vx": 0.004332592795132753,
+        "vy": -0.33169255589270663,
+        "angle": 2.4431792738801903,
+        "fuel": 81.89899999999554,
+        "time": 74.92000000000223,
+        "status": "landed",
+        "score": 50,
+        "decisions": 375,
+        "interventions": 204,
+        "latency_p50_ms": 11.106833000667393,
+        "latency_p95_ms": 11.993708001682535
+      },
+      {
+        "seed": 3002,
+        "target": 1,
+        "x": 499.8831355234091,
+        "y": 27.999784845693974,
+        "vx": 0.006860966439297098,
+        "vy": -0.232118407901737,
+        "angle": 3.5653494006702715,
+        "fuel": 81.97649999999548,
+        "time": 74.98000000000222,
+        "status": "landed",
+        "score": 50,
+        "decisions": 375,
+        "interventions": 195,
+        "latency_p50_ms": 10.946458001853898,
+        "latency_p95_ms": 12.783999991370365
+      }
+    ]
+  },
+  "trained": {
+    "pilot": {
+      "mode": "laya",
+      "model": "models/lunar-laya-supervised-mlx",
+      "revision": null,
+      "source_sha256": "2fd0ebcbc4436c293fff517fb7302dbae715be0d7a142f85ea47f2645d795c7a",
+      "training": {
+        "method": "supervised guidance imitation; cross entropy",
+        "source": "aac6fef/laya-multilingual-mlx",
+        "source_revision": "f2b4faf51023039425946074e2cf1361d2db11d5",
+        "world_size": 3,
+        "epochs": 3,
+        "encoder_layers": 2,
+        "trainable_parameters": 24801793,
+        "dataset": {
+          "teacher": "lunar_laya.pilot.guidance",
+          "questions": {
+            "rotation": {
+              "type": "choice",
+              "instructions": "Control lunar lander tilt. Follow the requested tilt correction.",
+              "criteria": {
+                "left": "Decrease tilt angle",
+                "hold": "Keep current tilt",
+                "right": "Increase tilt angle"
+              }
+            },
+            "engine": {
+              "type": "choice",
+              "instructions": "Control lunar lander engine. Follow the requested engine power.",
+              "criteria": {
+                "off": "Zero thrust",
+                "half": "Half thrust",
+                "full": "Full thrust"
+              }
+            }
+          },
+          "prompt_contains_requested_labels": true,
+          "splits": {
+            "train": {
+              "rows": 13022,
+              "rollout_seeds": [
+                1000,
+                1031
+              ],
+              "labels": {
+                "rotation:left": 1576,
+                "engine:off": 2787,
+                "rotation:hold": 3419,
+                "engine:half": 3316,
+                "rotation:right": 1516,
+                "engine:full": 408
+              },
+              "sha256": "c03c154f5eb4153d09ddb0958bce6a2a1b0bdd6297b37f420b45498b830e42ba"
+            },
+            "validation": {
+              "rows": 1928,
+              "rollout_seeds": [
+                2000,
+                2003
+              ],
+              "labels": {
+                "rotation:left": 284,
+                "engine:off": 432,
+                "rotation:hold": 415,
+                "engine:half": 444,
+                "rotation:right": 265,
+                "engine:full": 88
+              },
+              "sha256": "8d9ff3f5fe352ba957b5a3cddb43fc2adda5cb171819c292b1148f0a5e3ba863"
+            }
+          }
+        },
+        "best_validation_accuracy": 1.0,
+        "torch": "2.12.0+cu130"
+      }
+    },
+    "summaries": [
+      {
+        "seed": 3000,
+        "target": 1,
+        "x": 500.4732454343136,
+        "y": 27.995789968638963,
+        "vx": 0.002899837775433447,
+        "vy": -0.24655547730872615,
+        "angle": 0.7340529652198597,
+        "fuel": 82.00099999999523,
+        "time": 76.22000000000197,
+        "status": "landed",
+        "score": 50,
+        "decisions": 382,
+        "interventions": 0,
+        "latency_p50_ms": 10.755603987490758,
+        "latency_p95_ms": 11.159167013829574
+      },
+      {
+        "seed": 3001,
+        "target": 1,
+        "x": 500.1005561000835,
+        "y": 27.993425182448266,
+        "vx": 0.004332592795132753,
+        "vy": -0.33169255589270663,
+        "angle": 2.4431792738801903,
+        "fuel": 81.89899999999554,
+        "time": 74.92000000000223,
+        "status": "landed",
+        "score": 50,
+        "decisions": 375,
+        "interventions": 0,
+        "latency_p50_ms": 10.874125000555068,
+        "latency_p95_ms": 11.204249982256442
+      },
+      {
+        "seed": 3002,
+        "target": 1,
+        "x": 499.8831355234091,
+        "y": 27.999784845693974,
+        "vx": 0.006860966439297098,
+        "vy": -0.232118407901737,
+        "angle": 3.5653494006702715,
+        "fuel": 81.97649999999548,
+        "time": 74.98000000000222,
+        "status": "landed",
+        "score": 50,
+        "decisions": 375,
+        "interventions": 0,
+        "latency_p50_ms": 10.828500002389774,
+        "latency_p95_ms": 11.201666988199577
+      }
+    ]
+  }
+}
