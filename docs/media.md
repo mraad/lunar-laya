@@ -34,7 +34,12 @@ interpolate intermediate physics states; the in-page flight deck does
 interpolate between control stages so playback is not 5 fps, but this exporter
 deliberately does not, so every frame here is a state the simulator produced.
 The lander is the chamfered-box silhouette shared with the SPA, lunar-mpc and
-lunar-mpc-laya, with its footpads exactly one hull radius below the centre. The terminal frame displays the final
+lunar-mpc-laya. The game lands when the hull centre is one radius above the
+surface, and the symbol's lowest part rests on exactly that point: the footpads
+when it is upright, whichever corner has swung lowest when it is tilted. It is
+drawn as a legible symbol rather than to scale, since at 0.43 pixels per world
+unit a to-scale one would be five pixels across, so that offset is measured on
+the rotated silhouette and no part lands inside the terrain at any attitude. The terminal frame displays the final
 summary; its probabilities and latency belong to the last executed decision.
 The screenshot is a generated illustration of measured data, not browser capture.
 
