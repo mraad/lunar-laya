@@ -71,12 +71,21 @@ def render(record, episode, index, speed):
         return [(x + a * math.cos(angle) - b * math.sin(angle),
                  y + a * math.sin(angle) + b * math.cos(angle)) for a, b in points]
 
-    draw.line(ship([(0,-10),(7,-4),(6,4),(-6,4),(-7,-4),(0,-10)]), fill=MINT, width=2)
-    for sign in (-1, 1):
-        draw.line(ship([(sign*5,4),(sign*7,8),(sign*11,8)]), fill=MINT, width=2)
+    # Same chamfered-box lander the web pages draw, in units of one eighth of the
+    # hull radius; the footpads end exactly `u * 8` below the centre.
+    u = 1.4
     command = decision["executed"]
     if not terminal and state["fuel"] > 0 and command["throttle"] > 0:
-        draw.line(ship([(-3,6),(0,10+14*command["throttle"]),(3,6)]), fill=AMBER, width=2)
+        reach = (6 + 11 * command["throttle"]) * u
+        draw.polygon(ship([(-1.5*u, 5*u), (0, 5*u + reach), (1.5*u, 5*u)]), fill=AMBER)
+    draw.polygon(ship([(-1.7*u, 3*u), (1.7*u, 3*u), (1.1*u, 5.2*u), (-1.1*u, 5.2*u)]), fill=MUTED)
+    hull = [(-6,-7), (-4,-9), (4,-9), (6,-7), (6,1), (4,3), (-4,3), (-6,1)]
+    draw.polygon(ship([(a*u, b*u) for a, b in hull]), fill="#1d3541", outline=MINT)
+    draw.line(ship([(-6*u, -1.2*u), (6*u, -1.2*u)]), fill=MINT)
+    draw.polygon(ship([(-2.2*u,-6.4*u), (2.2*u,-6.4*u), (2.2*u,-2*u), (-2.2*u,-2*u)]), fill=MUTED)
+    for sign in (-1, 1):
+        draw.line(ship([(sign*4*u, 3*u), (sign*7.2*u, 8*u)]), fill=MINT)
+        draw.line(ship([(sign*5.8*u, 8*u), (sign*8.6*u, 8*u)]), fill=MINT, width=2)
     text(42, 180, f"SEED {summary['seed']} / PAD {summary['target'] + 1}", 13, MUTED)
     text(742, 120, "MODEL DECISION", 13, MUTED)
     for name, row_y in (("rotation", 155), ("engine", 250)):
