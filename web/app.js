@@ -171,7 +171,55 @@ function render() {
   $("intervention").classList.toggle("warning", d.intervened);
   probabilities(d.answers);
   updatePlay();
-  draw(s, d, episode, end);
+  // `frame.after` is where this 0.2 s control stage ends; the same duration the
+  // playback clock in tick() uses, so the pose lands exactly on the next frame.
+  const span = end ? 1 : frame.after.time - frame.before.time;
+  draw(end ? s : pose(s, frame.after, state.playing ? state.elapsed / span : 0), d, episode, end);
+}
+
+// ---------- shared lander art ----------
+// One chamfered-box lander, shared byte for byte with lunar-mpc and lunar-mpc-laya.
+// Coordinates are in units of RADIUS/8 with y pointing down, so the footpads sit
+// exactly RADIUS below the hull centre and rest on the surface at touchdown.
+const HULL = [[-6, -7], [-4, -9], [4, -9], [6, -7], [6, 1], [4, 3], [-4, 3], [-6, 1]];
+const NOZZLE = [[-1.7, 3], [1.7, 3], [1.1, 5.2], [-1.1, 5.2]];
+const STRUTS = [[-4, 3, -7.2, 8], [4, 3, 7.2, 8]];
+const PADS_ART = [[-8.6, 8, -5.8, 8], [5.8, 8, 8.6, 8]];
+
+// Draws into the caller's frame: translate to the hull centre and rotate first.
+// `u` is one eighth of RADIUS in canvas pixels; `flip` is -1 for a y-up frame.
+function drawLander(ctx, u, { body = "#d6e6de", trim = "#f0f5eb", glass = "#3a6265", flip = 1 } = {}) {
+  const path = points => {
+    ctx.beginPath();
+    points.forEach(([x, y], i) => i ? ctx.lineTo(x * u, y * u * flip) : ctx.moveTo(x * u, y * u * flip));
+    ctx.closePath();
+  };
+  ctx.lineJoin = "miter";
+  path(NOZZLE); ctx.fillStyle = glass; ctx.fill();
+  path(HULL); ctx.fillStyle = body; ctx.fill();
+  ctx.strokeStyle = trim; ctx.lineWidth = Math.max(0.8, 0.35 * u); ctx.stroke();
+  ctx.fillStyle = glass; ctx.fillRect(-2.2 * u, (flip > 0 ? -6.4 : 2) * u, 4.4 * u, 4.4 * u);
+  ctx.strokeStyle = trim; ctx.lineWidth = Math.max(0.7, 0.25 * u);
+  ctx.beginPath();
+  ctx.moveTo(-6 * u, -1.2 * u * flip); ctx.lineTo(6 * u, -1.2 * u * flip);
+  for (const [x0, y0, x1, y1] of STRUTS) { ctx.moveTo(x0 * u, y0 * u * flip); ctx.lineTo(x1 * u, y1 * u * flip); }
+  ctx.stroke();
+  // Footpads carry the weight, so they read heavier than the struts.
+  ctx.lineWidth = Math.max(1.2, 0.5 * u); ctx.lineCap = 'butt';
+  ctx.beginPath();
+  for (const [x0, y0, x1, y1] of PADS_ART) { ctx.moveTo(x0 * u, y0 * u * flip); ctx.lineTo(x1 * u, y1 * u * flip); }
+  ctx.stroke();
+}
+
+// One control stage is 0.2 s, so drawing only on stage boundaries animates at 5 fps.
+// `blend` mixes the state the stage ended in into the one it started from, which puts
+// the drawn lander a stage behind the telemetry but moves it every frame.
+function pose(before, after, blend) {
+  if (!after || before.status !== "flying") return before;
+  const t = Math.max(0, Math.min(1, blend));
+  const spin = ((after.angle - before.angle + 180) % 360 + 360) % 360 - 180;
+  return { ...before, x: before.x + (after.x - before.x) * t, y: before.y + (after.y - before.y) * t,
+    angle: before.angle + spin * t };
 }
 
 function draw(s, decision, episode, end) {
@@ -213,12 +261,15 @@ function draw(s, decision, episode, end) {
   const x = px(s.x), y = py(s.y);
   ctx.strokeStyle = "#244c46";ctx.setLineDash([3, 7]);ctx.beginPath();ctx.moveTo(x, y + 24);ctx.lineTo(x, py(padHeight(s.x)));ctx.stroke();ctx.setLineDash([]);
   ctx.save();ctx.translate(x, y);ctx.rotate(s.angle * Math.PI / 180);
-  ctx.strokeStyle = s.status === "crashed" || s.status === "out_of_bounds" ? "#e7ac83" : "#d9fff0";
-  ctx.lineWidth = 1.8;ctx.beginPath();ctx.moveTo(0, -10);ctx.lineTo(7, -4);ctx.lineTo(6, 4);ctx.lineTo(-6, 4);ctx.lineTo(-7, -4);ctx.closePath();
-  ctx.moveTo(-5, 4);ctx.lineTo(-6, 8);ctx.lineTo(-8, 8);ctx.moveTo(5, 4);ctx.lineTo(6, 8);ctx.lineTo(8, 8);ctx.stroke();
+  // Footpads end exactly RADIUS below the hull centre in canvas units, so they touch the surface at touchdown.
+  const u = (H - 58 * scale) / 750;
   if (!end && s.fuel > 0 && decision.executed.throttle > 0) {
-    ctx.strokeStyle = "#edbf7f";ctx.beginPath();ctx.moveTo(-3, 6);ctx.lineTo(0, 10 + 15 * decision.executed.throttle);ctx.lineTo(3, 6);ctx.stroke();
+    const reach = (6 + 11 * decision.executed.throttle + Math.random()) * u;
+    ctx.beginPath();ctx.moveTo(-1.5 * u, 5 * u);ctx.lineTo(1.5 * u, 5 * u);ctx.lineTo(0, 5 * u + reach);ctx.closePath();
+    ctx.fillStyle = "#edbf7f";ctx.fill();
   }
+  const wrecked = s.status === "crashed" || s.status === "out_of_bounds";
+  drawLander(ctx, u, wrecked ? {body: "#8a5f4b", trim: "#e7ac83", glass: "#4b2f24"} : {body: "#c8ded4", trim: "#d9fff0", glass: "#24424c"});
   ctx.restore();
   ctx.fillStyle = "#829eab";ctx.font = "10px monospace";
   ctx.fillText("LUNAR SURFACE / VECTOR TELEMETRY", 24, H - 12);
@@ -248,7 +299,9 @@ function tick(now) {
     if (state.frame === frames.length) state.playing = false;
   }
   state.last = now;
-  if (changed) render();
+  // Redraw every animation frame, not only when a control stage boundary is crossed;
+  // stages are 0.2 s apart and stepping on boundaries alone animates at 5 fps.
+  if (changed || state.playing) render();
   requestAnimationFrame(tick);
 }
 

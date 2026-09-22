@@ -6,11 +6,11 @@
   "model": "./models/lunar-laya-supervised-mlx",
   "status": "landed",
   "simulation_seconds": 76.22000000000197,
-  "speed": 4,
+  "speed": 4.0,
   "fps": 10,
   "duration_ms": 22300,
   "sampled_frames": 192,
-  "size_bytes": 2138595,
+  "size_bytes": 2140006,
   "summary": {
     "seed": 3000,
     "target": 1,

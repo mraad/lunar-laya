@@ -128,3 +128,17 @@ The output directory is reusable. A rebuild overwrites generated asset and
 recording filenames but does not delete unrelated/stale files already present
 there. The manifest controls which runs appear in the interface. Use a new
 `--output` directory for a clean, separately archived application build.
+
+## Drawing
+
+`drawLander` is one chamfered-box lander shared byte for byte with lunar-mpc and
+lunar-mpc-laya. Its coordinates are in units of `RADIUS / 8` with y pointing
+down, so the footpads sit exactly one hull radius below the centre and rest on
+the surface at touchdown.
+
+A recorded frame is one 0.2 s control stage, so redrawing only when a stage ends
+animates the flight at 5 fps. `pose()` mixes `frame.after` back into
+`frame.before` by the fraction of the stage the playback clock has covered, and
+the canvas now redraws every animation frame while playing. The drawn lander is
+at most one stage behind the telemetry panel, which still reads exact decision
+states.

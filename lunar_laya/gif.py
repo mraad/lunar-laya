@@ -9,6 +9,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+from lunar_laya.game import RADIUS, ground
+
 BG, PANEL, GRID = "#0b111b", "#101d29", "#203140"
 TEXT, MUTED, MINT, AMBER = "#e6f4f4", "#94aabd", "#90edd0", "#f3c583"
 FONTS = {size: ImageFont.load_default(size=size) for size in (13, 15, 18, 23, 30)}
@@ -67,16 +69,47 @@ def render(record, episode, index, speed):
     x, y = point(state["x"], state["y"])
     angle = math.radians(state["angle"])
 
-    def ship(points):
-        return [(x + a * math.cos(angle) - b * math.sin(angle),
-                 y + a * math.sin(angle) + b * math.cos(angle)) for a, b in points]
+    # Same chamfered-box lander the web pages draw, in units of one eighth of the
+    # hull radius. The vertical scale here is 0.43 px per world unit, so a
+    # to-scale lander would be five pixels across and unreadable; it is drawn as
+    # a legible symbol instead. The game lands when y - RADIUS reaches the
+    # surface, so `foot` is the contact point in pixels. An enlarged rigid body
+    # anchored at one point swings below it once rotated, so the offset is
+    # measured on the rotated silhouette in screen space: `drop` puts whichever
+    # part is lowest at this attitude exactly on the contact point, and nothing
+    # is drawn inside the terrain at any angle. The body therefore rides above
+    # the true hull centre, the same exaggeration as its size, by an amount that
+    # varies with tilt.
+    foot = RADIUS * 0.43
+    u, command = 1.4, decision["executed"]
+    HULL = [(-6, -7), (-4, -9), (4, -9), (6, -7), (6, 1), (4, 3), (-4, 3), (-6, 1)]
+    NOZZLE = [(-1.7, 3), (1.7, 3), (1.1, 5.2), (-1.1, 5.2)]
+    PADS_ART = [(-8.6, 8), (-5.8, 8), (5.8, 8), (8.6, 8), (-7.2, 8), (7.2, 8)]
 
-    draw.line(ship([(0,-10),(7,-4),(6,4),(-6,4),(-7,-4),(0,-10)]), fill=MINT, width=2)
-    for sign in (-1, 1):
-        draw.line(ship([(sign*5,4),(sign*7,8),(sign*11,8)]), fill=MINT, width=2)
-    command = decision["executed"]
+    def turn(a, b):
+        return (a * u * math.cos(angle) - b * u * math.sin(angle),
+                a * u * math.sin(angle) + b * u * math.cos(angle))
+
+    drop = max(turn(a, b)[1] for a, b in HULL + NOZZLE + PADS_ART) - foot
+
+    def part(points):
+        return [(x + dx, y + dy - drop) for dx, dy in (turn(a, b) for a, b in points)]
+
     if not terminal and state["fuel"] > 0 and command["throttle"] > 0:
-        draw.line(ship([(-3,6),(0,10+14*command["throttle"]),(3,6)]), fill=AMBER, width=2)
+        # Recorded states are captured before the step, so a burn a fraction of a
+        # second above the ground reaches this renderer. The terrain is already
+        # painted, so an unclipped plume would be drawn on top of it; stop it at
+        # the surface under the lander instead.
+        surface = point(0, ground(state["x"]))[1]
+        flame = part([(-1.5, 5), (0, 5 + 6 + 11 * command["throttle"]), (1.5, 5)])
+        draw.polygon([(fx, min(fy, surface)) for fx, fy in flame], fill=AMBER)
+    draw.polygon(part(NOZZLE), fill=MUTED)
+    draw.polygon(part(HULL), fill="#1d3541", outline=MINT)
+    draw.line(part([(-6, -1.2), (6, -1.2)]), fill=MINT)
+    draw.polygon(part([(-2.2,-6.4), (2.2,-6.4), (2.2,-2), (-2.2,-2)]), fill=MUTED)
+    for sign in (-1, 1):
+        draw.line(part([(sign*4, 3), (sign*7.2, 8)]), fill=MINT)
+        draw.line(part([(sign*5.8, 8), (sign*8.6, 8)]), fill=MINT, width=2)
     text(42, 180, f"SEED {summary['seed']} / PAD {summary['target'] + 1}", 13, MUTED)
     text(742, 120, "MODEL DECISION", 13, MUTED)
     for name, row_y in (("rotation", 155), ("engine", 250)):

@@ -162,7 +162,19 @@ assistance policy, collision rules, and how to extend the experiment.
 - Actual Laya-MLX inference with two typed choices and no generated JSON;
   the compact runtime processes choices sequentially to reduce memory.
 - A deterministic controller and an explicit assistance mode for comparison.
-- Offline vector-style flight replay with state, commands and model probabilities.
+- Offline vector-style flight replay with state, commands and model probabilities,
+  drawn between decisions rather than only on them: a recorded frame covers one
+  0.2 s control stage, so redrawing only at stage boundaries animates at 5 fps.
+  The flight deck mixes the state a stage ended in back into the one it started
+  from and redraws every animation frame, which leaves the drawn lander at most
+  one stage behind the telemetry panel while the panel keeps reporting exact
+  decision states.
+- A chamfered-box lander shared byte for byte with
+  [lunar-mpc](https://github.com/mraad/lunar-mpc) and
+  [lunar-mpc-laya](https://github.com/mraad/lunar-mpc-laya), in the SPA and in
+  the GIF renderer. Its coordinates are in units of `RADIUS / 8` with y pointing
+  down, so the footpads sit exactly one hull radius below the centre and touch
+  the surface at touchdown at any canvas size.
 
 The original arcade game has variable thrust, rotation controls, fuel management
 and scored landings. Atari also describes abort and mission selection controls.
@@ -198,7 +210,7 @@ lunar_laya/replay.html   standalone canvas replay and telemetry interface
 tests/test_lunar.py      dependency-free regression checks
 docs/                   implementation and measured validation
 training/               additional supervised CUDA training and MLX verification
-web/                    VanillaJS SPA, static builder and playback tests
+web/                    VanillaJS SPA (shared lander art, stage interpolation), builder and playback tests
 ```
 
 Reference projects: [Laya](https://github.com/NandhaKishorM/laya),
