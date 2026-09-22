@@ -42,7 +42,7 @@ The GIF is 1000 × 620 pixels with a 64-color palette per frame, 10 frames per
 second and infinite looping. At 4× speed it samples a recorded state every
 0.4 simulation seconds, holds the first frame for 800 ms and the final frame
 for 2,500 ms. This export has 192 sampled frames, a 22.3-second playback cycle,
-and is 2,129,382 bytes. GIF timing is quantized to its native 10 ms clock.
+and is 2,137,489 bytes. GIF timing is quantized to its native 10 ms clock.
 
 The exporter also writes a final-frame PNG and a JSON sidecar containing the
 source SHA-256, model path, seed, outcome, timing and episode summary. The checked

@@ -9,6 +9,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+from lunar_laya.game import RADIUS
+
 BG, PANEL, GRID = "#0b111b", "#101d29", "#203140"
 TEXT, MUTED, MINT, AMBER = "#e6f4f4", "#94aabd", "#90edd0", "#f3c583"
 FONTS = {size: ImageFont.load_default(size=size) for size in (13, 15, 18, 23, 30)}
@@ -72,20 +74,31 @@ def render(record, episode, index, speed):
                  y + a * math.sin(angle) + b * math.cos(angle)) for a, b in points]
 
     # Same chamfered-box lander the web pages draw, in units of one eighth of the
-    # hull radius; the footpads end exactly `u * 8` below the centre.
-    u = 1.4
-    command = decision["executed"]
+    # hull radius. The vertical scale here is 0.43 px per world unit, so a
+    # to-scale lander would be five pixels across and unreadable; it is drawn as
+    # a legible symbol instead. The game lands when y - RADIUS reaches the
+    # surface, so `foot` is the contact point in pixels, and the symbol is
+    # anchored by its footpads rather than its centre: `lift` raises the whole
+    # body so the pads sit exactly on the contact point and nothing is ever
+    # drawn inside the terrain. The body is therefore higher than the true hull
+    # centre by that much, the same exaggeration as its size.
+    foot = RADIUS * 0.43
+    u, command = 1.4, decision["executed"]
+    lift = 8 * u - foot
+
+    def part(points):
+        return ship([(a * u, b * u - lift) for a, b in points])
+
     if not terminal and state["fuel"] > 0 and command["throttle"] > 0:
-        reach = (6 + 11 * command["throttle"]) * u
-        draw.polygon(ship([(-1.5*u, 5*u), (0, 5*u + reach), (1.5*u, 5*u)]), fill=AMBER)
-    draw.polygon(ship([(-1.7*u, 3*u), (1.7*u, 3*u), (1.1*u, 5.2*u), (-1.1*u, 5.2*u)]), fill=MUTED)
-    hull = [(-6,-7), (-4,-9), (4,-9), (6,-7), (6,1), (4,3), (-4,3), (-6,1)]
-    draw.polygon(ship([(a*u, b*u) for a, b in hull]), fill="#1d3541", outline=MINT)
-    draw.line(ship([(-6*u, -1.2*u), (6*u, -1.2*u)]), fill=MINT)
-    draw.polygon(ship([(-2.2*u,-6.4*u), (2.2*u,-6.4*u), (2.2*u,-2*u), (-2.2*u,-2*u)]), fill=MUTED)
+        draw.polygon(part([(-1.5, 5), (0, 5 + 6 + 11 * command["throttle"]), (1.5, 5)]), fill=AMBER)
+    draw.polygon(part([(-1.7, 3), (1.7, 3), (1.1, 5.2), (-1.1, 5.2)]), fill=MUTED)
+    draw.polygon(part([(-6,-7), (-4,-9), (4,-9), (6,-7), (6,1), (4,3), (-4,3), (-6,1)]),
+                 fill="#1d3541", outline=MINT)
+    draw.line(part([(-6, -1.2), (6, -1.2)]), fill=MINT)
+    draw.polygon(part([(-2.2,-6.4), (2.2,-6.4), (2.2,-2), (-2.2,-2)]), fill=MUTED)
     for sign in (-1, 1):
-        draw.line(ship([(sign*4*u, 3*u), (sign*7.2*u, 8*u)]), fill=MINT)
-        draw.line(ship([(sign*5.8*u, 8*u), (sign*8.6*u, 8*u)]), fill=MINT, width=2)
+        draw.line(part([(sign*4, 3), (sign*7.2, 8)]), fill=MINT)
+        draw.line(part([(sign*5.8, 8), (sign*8.6, 8)]), fill=MINT, width=2)
     text(42, 180, f"SEED {summary['seed']} / PAD {summary['target'] + 1}", 13, MUTED)
     text(742, 120, "MODEL DECISION", 13, MUTED)
     for name, row_y in (("rotation", 155), ("engine", 250)):
